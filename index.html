@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Valentine 💕</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: 350px;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e63956;
+    }
+
+    .heart {
+      font-size: 40px;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Happy Valentine 💖</h1>
+    <p>
+      เราอาจไม่ได้สมบูรณ์แบบ<br>
+      แต่ทุกวันที่มีเธอ มันพิเศษเสมอ
+    </p>
+
+    <button onclick="showLove()">กดดูข้อความลับ 💌</button>
+
+    <div class="heart" id="heart">
+      ❤️ รักเธอมากนะ ❤️
+    </div>
+  </div>
+
+  <script>
+    function showLove() {
+      document.getElementById("heart").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
