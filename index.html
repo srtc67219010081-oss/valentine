@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Valentine 💕</title>
+  <title>Happy Valentine 💖</title>
   <style>
     body {
       margin: 0;
@@ -12,6 +12,7 @@
       justify-content: center;
       align-items: center;
       font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
     }
 
     .card {
@@ -20,63 +21,111 @@
       border-radius: 20px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      max-width: 350px;
+      z-index: 10;
     }
 
     h1 {
       color: #ff4d6d;
-      margin-bottom: 10px;
     }
 
     p {
       font-size: 18px;
-      color: #444;
     }
 
     button {
-      margin-top: 20px;
       padding: 12px 25px;
+      font-size: 18px;
       border: none;
       border-radius: 30px;
-      background: #ff4d6d;
-      color: white;
-      font-size: 16px;
       cursor: pointer;
-      transition: 0.3s;
+      margin: 10px;
     }
 
-    button:hover {
-      background: #e63956;
+    #loveBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ccc;
+      position: absolute;
     }
 
     .heart {
-      font-size: 40px;
-      margin-top: 15px;
-      display: none;
+      position: fixed;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Happy Valentine 💖</h1>
-    <p>
-      เราอาจไม่ได้สมบูรณ์แบบ<br>
-      แต่ทุกวันที่มีเธอ มันพิเศษเสมอ
-    </p>
+<div class="card" id="card">
+  <h1>สุขสันต์วันวาเลนไทน์ 💖</h1>
+  <p>
+    ถึง <strong>ฟิม</strong><br><br>
+    ขอบคุณที่อยู่ข้าง ๆ กันเสมอ  
+    เรารักคุณนะ 💕
+  </p>
+  <button id="loveBtn">รัก 💗</button>
+  <button id="noBtn">ไม่รัก 🙃</button>
+</div>
 
-    <button onclick="showLove()">กดดูข้อความลับ 💌</button>
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="heart" id="heart">
-      ❤️ รักเธอมากนะ ❤️
-    </div>
-  </div>
+<script>
+  const noBtn = document.getElementById("noBtn");
+  const loveBtn = document.getElementById("loveBtn");
+  const card = document.getElementById("card");
+  const music = document.getElementById("music");
 
-  <script>
-    function showLove() {
-      document.getElementById("heart").style.display = "block";
-    }
-  </script>
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  loveBtn.addEventListener("click", () => {
+    music.play();
+    card.innerHTML = `
+      <h1>เย้!!! 💘</h1>
+      <p>
+        เราดีใจมากนะ 🥰<br>
+        ขอให้เรารักกันแบบนี้ไปนาน ๆ เลย 💕
+      </p>
+    `;
+  });
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
 
 </body>
 </html>
